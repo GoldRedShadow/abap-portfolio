@@ -1,14 +1,14 @@
-class ZSLAN_ABAP_MAIN definition
-  public
-  final
-  create public .
+CLASS zslan_abap_main DEFINITION
+  PUBLIC
+  FINAL
+  CREATE PUBLIC .
 
-public section.
-protected section.
-private section.
+  PUBLIC SECTION.
+  PROTECTED SECTION.
+  PRIVATE SECTION.
 ENDCLASS.
 
 
 
-CLASS ZSLAN_ABAP_MAIN IMPLEMENTATION.
+CLASS zslan_abap_main IMPLEMENTATION.
 ENDCLASS.
