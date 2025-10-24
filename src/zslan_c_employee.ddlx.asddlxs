@@ -1,0 +1,38 @@
+@Metadata.layer: #CUSTOMER
+@UI.headerInfo:
+{
+    typeNamePlural: 'Employees',
+    typeName: 'Employee',
+    title.value: 'EmployeeId',
+    description.value: 'LastName'
+}
+
+annotate entity ZSLAN_C_Employee with
+{
+  @UI.facet:
+  [
+  { position: 10, targetQualifier: 'EmployeeDetails', label: 'EmployeeDetails', type: #FIELDGROUP_REFERENCE },
+  { position: 20, targetQualifier: 'ApproverData', label: 'Approver Data', type: #FIELDGROUP_REFERENCE},
+  { position: 30, targetElement: '_VA_Inquiry', label: 'Vacation Inquiry', type: #LINEITEM_REFERENCE }
+  ]
+  @UI.fieldGroup: [{ position: 10, qualifier: 'ApproverData' }]
+  EmployeeUuid;
+
+  @UI.lineItem: [{ position: 10 }]
+  @UI.fieldGroup: [{ position: 20, qualifier: 'EmployeeDetails' }]
+  EmployeeId;
+
+  @UI.lineItem: [{ position: 30 }]
+  @UI.selectionField: [{ position: 20 }]
+  @UI.fieldGroup: [{ position: 30, qualifier: 'EmployeeDetails' }]
+  FirstName;
+
+  @UI.lineItem: [{ position: 40 }]
+  @UI.selectionField: [{ position: 30 }]
+  @UI.fieldGroup: [{ position: 40, qualifier: 'EmployeeDetails' }]
+  LastName;
+
+  @UI.lineItem: [ { position: 50 } ]
+  @UI.fieldGroup: [{ position: 50, qualifier: 'ApproverData' }]
+  EntryDate;
+}

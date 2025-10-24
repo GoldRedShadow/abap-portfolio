@@ -1,0 +1,49 @@
+@Metadata.layer: #CUSTOMER
+@UI.headerInfo:
+{ 
+    typeName: 'VacationInquiry',
+    typeNamePlural: 'VacationInquiries',
+    title.value: 'EmployeeUuid',
+    description.value: 'CommentText'
+
+
+}
+annotate entity ZSLAN_C_VA_INQUIRY
+    with 
+{
+    @UI.facet:
+    [
+    { position: 10, targetQualifier: 'VacationInquiryDetails', label: 'Vacation Inquiry Details', type: #FIELDGROUP_REFERENCE }
+    ]
+    
+    @UI.fieldGroup: [{ position: 10, qualifier: 'VacationInquiryDetails' }]
+    EmployeeUuid;
+    
+    @UI.fieldGroup: [{ position: 20, qualifier: 'VacationInquiryDetails' }]
+    @UI.lineItem: [{ position: 10 }]
+    ApplicantUuid;
+    
+    @UI.fieldGroup: [{ position: 30, qualifier: 'VacationInquiryDetails' }]
+    @UI.lineItem: [{ position: 20 }]
+    BeginDate;
+    
+    @UI.fieldGroup: [{ position: 40, qualifier: 'VacationInquiryDetails' }]
+    @UI.lineItem: [{ position: 30 }]
+    EndDate;
+    
+    @UI.fieldGroup: [{ position: 50, qualifier: 'VacationInquiryDetails' }]
+    @UI.lineItem: [{ position: 40 }]
+    VacationDays;
+    
+    @UI.fieldGroup: [{ position: 60, qualifier: 'VacationInquiryDetails' }]
+    @UI.lineItem: [{ position: 50 }]
+    ApproverUuid;
+    
+    @UI.fieldGroup: [{ position: 70, qualifier: 'VacationInquiryDetails' }]
+    @UI.lineItem: [{ position: 60 }]
+    CommentText;
+    
+    @UI.fieldGroup: [{ position: 80, qualifier: 'VacationInquiryDetails' }]
+    @UI.lineItem: [{ position: 70 }]
+    Status;
+}
