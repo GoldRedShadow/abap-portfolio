@@ -4,8 +4,8 @@
   <asx:values>
    <DDLX>
     <METADATA>
-     <NAME>ZSLAN_C_VA_INQUIRY</NAME>
-     <DESCRIPTION>Metadata Extension Vacation Inquiry</DESCRIPTION>
+     <NAME>ZSLAN_C_VA_CLAIM</NAME>
+     <DESCRIPTION>Metadata Extension Urlaubsanspruch</DESCRIPTION>
      <MASTER_LANGUAGE>EN</MASTER_LANGUAGE>
     </METADATA>
    </DDLX>

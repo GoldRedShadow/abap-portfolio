@@ -3,10 +3,12 @@
 {
 "FROM":
 [
-"ZSLAN_EMPLOYEE"
+"ZSLAN_VA_INQUIRY"
 ],
 "ASSOCIATED":
-[],
+[
+"ZSLAN_R_EMPLOYEE"
+],
 "BASE":
 [],
 "ANNO_REF":

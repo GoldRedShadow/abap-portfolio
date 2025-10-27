@@ -1,5 +1,0 @@
-@EndUserText.label: 'Employee'
-define service ZSLAN_UI_EMPLOYEE {
-  expose ZSLAN_C_Employee   as Employee;
-  expose ZSLAN_C_VA_INQUIRY as VA_Inquiry;
-}

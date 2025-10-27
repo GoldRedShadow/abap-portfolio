@@ -1,38 +1,39 @@
 @Metadata.layer: #CUSTOMER
 @UI.headerInfo:
 {
-    typeNamePlural: 'Employees',
-    typeName: 'Employee',
-    title.value: 'EmployeeId',
-    description.value: 'LastName'
+    typeNamePlural: 'Urlaubsansprüche',
+    typeName: 'Urlaubsanspruch',
+    title.value: 'ClaimUuid',
+    description.value: 'VacationDays'
 }
 
-annotate entity ZSLAN_C_EMPLOYEE with
+annotate entity ZSLAN_C_VA_CLAIM with
 {
   @UI.facet:
   [
   { position: 10, targetQualifier: 'EmployeeDetails', label: 'EmployeeDetails', type: #FIELDGROUP_REFERENCE },
   { position: 20, targetQualifier: 'ApproverData', label: 'Approver Data', type: #FIELDGROUP_REFERENCE},
-  { position: 30, targetElement: '_applicant', label: 'Vacation Inquiry', type: #LINEITEM_REFERENCE }
+  { position: 30, targetElement: '_claim', label: 'Vacation Inquiry', type: #LINEITEM_REFERENCE }
   ]
   @UI.fieldGroup: [{ position: 10, qualifier: 'ApproverData' }]
-  EmployeeUuid;
+  ClaimUuid;
 
-  @UI.lineItem: [{ position: 10 }]
-  @UI.fieldGroup: [{ position: 20, qualifier: 'EmployeeDetails' }]
-  EmployeeId;
+  @UI.lineItem: [
+  { position: 10, value: 'ClaimUuid' },
+  { position: 20, value: '_Claim.FirstName', label: 'Vorname Antragsteller', qualifier: 'EmployeeDetails'},
+  { position: 30, value: '_Claim.LastName', label: 'Nachname Antragsteller', qualifier: 'EmployeeDetails' } ]
+  fullname;
 
   @UI.lineItem: [{ position: 30 }]
   @UI.selectionField: [{ position: 20 }]
   @UI.fieldGroup: [{ position: 30, qualifier: 'EmployeeDetails' }]
-  FirstName;
+  YearOfClaim;
 
   @UI.lineItem: [{ position: 40 }]
   @UI.selectionField: [{ position: 30 }]
   @UI.fieldGroup: [{ position: 40, qualifier: 'EmployeeDetails' }]
-  LastName;
+  VacationDays;
+  
 
-  @UI.lineItem: [ { position: 50 } ]
-  @UI.fieldGroup: [{ position: 50, qualifier: 'ApproverData' }]
-  EntryDate;
+
 }
