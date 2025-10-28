@@ -2,6 +2,7 @@
 @EndUserText.label: 'Employee Basic View'
 define root view entity ZSLAN_R_EMPLOYEE as select from zslan_employee
 
+
 {
     key employee_uuid as EmployeeUuid,
     employee_id as EmployeeId,

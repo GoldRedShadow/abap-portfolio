@@ -36,7 +36,6 @@ CLASS zslan_cl_employee_generator IMPLEMENTATION.
     DELETE FROM zslan_va_claim.
     out->write( |Deleted Claims: { sy-dbcnt }| ).
 
-
     " Create Employees
     employee-client = '001'.
     employee-employee_id = '000001'.
@@ -215,6 +214,7 @@ CLASS zslan_cl_employee_generator IMPLEMENTATION.
 
     INSERT zslan_va_claim FROM TABLE @va_claims.
     out->write( |Inserted Claims: { sy-dbcnt }| ).
+
 
   ENDMETHOD.
 

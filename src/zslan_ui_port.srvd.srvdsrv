@@ -1,7 +1,0 @@
-@EndUserText.label: 'Service Definition UI Portfolio'
-define service ZSLAN_UI_PORT {
-  expose ZSLAN_C_EMPLOYEE             as Employee;
-  expose ZSLAN_C_VA_CLAIM             as Claim;
-  expose ZSLAN_C_VA_INQUIRY_APPLICANT as Applicant;
-  expose ZSLAN_C_VA_INQUIRY_APPROVER  as Approver;
-}
