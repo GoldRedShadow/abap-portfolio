@@ -18,11 +18,10 @@ annotate entity ZSLAN_C_VA_CLAIM with
   @UI.fieldGroup: [{ position: 10, qualifier: 'ApproverData' }]
   ClaimUuid;
 
-  @UI.lineItem: [
-  { position: 10, value: 'ClaimUuid' },
-  { position: 20, value: '_Claim.FirstName', label: 'Vorname Antragsteller', qualifier: 'EmployeeDetails'},
-  { position: 30, value: '_Claim.LastName', label: 'Nachname Antragsteller', qualifier: 'EmployeeDetails' } ]
-  fullname;
+
+  @UI.lineItem: [{ position: 10 }]
+    @UI.fieldGroup: [{ position: 20, qualifier: 'EmployeeDetails' }]
+  EmployeeName;
 
   @UI.lineItem: [{ position: 30 }]
   @UI.selectionField: [{ position: 20 }]
@@ -33,6 +32,7 @@ annotate entity ZSLAN_C_VA_CLAIM with
   @UI.selectionField: [{ position: 30 }]
   @UI.fieldGroup: [{ position: 40, qualifier: 'EmployeeDetails' }]
   VacationDays;
+  
   
 
 

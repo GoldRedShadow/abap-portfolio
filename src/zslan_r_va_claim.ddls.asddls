@@ -3,6 +3,9 @@
 define view entity ZSLAN_R_VA_CLAIM as select from zslan_va_claim
 association to parent ZSLAN_R_EMPLOYEE as _Claim 
     on $projection.EmployeeUuid = _Claim.EmployeeUuid
+    
+    association [1..1] to ZSLAN_i_EmployeeText as _EmployeeText on $projection.EmployeeUuid = _EmployeeText.EmployeeUuid
+    
 {
     key claim_uuid as ClaimUuid,
     employee_uuid as EmployeeUuid,
@@ -14,5 +17,7 @@ association to parent ZSLAN_R_EMPLOYEE as _Claim
     last_changed_at as LastChangedAt,
     
     //Association
-    _Claim
+    _Claim,
+        _EmployeeText.Name as EmployeeName
+    
 }

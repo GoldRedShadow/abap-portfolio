@@ -4,8 +4,11 @@
 @Metadata.allowExtensions: true
 define root view entity ZSLAN_C_EMPLOYEE
   as projection on ZSLAN_R_EMPLOYEE
-  // 1. Urlaubsansprüche: [0..*] von Mitarbeiter zu Ansprüchen
-  association [0..*] to ZSLAN_C_VA_CLAIM             as _Claims    on _Claims.EmployeeUuid = $projection.EmployeeUuid
+
+  association [0..*] to ZSLAN_C_VA_CLAIM             as _Claim    on _Claim.EmployeeUuid = $projection.EmployeeUuid
+  association [0..*] to ZSLAN_C_VA_INQUIRY             as _APPROVER   on _APPROVER.ApproverUuid = $projection.EmployeeUuid
+  association [0..*] to ZSLAN_C_VA_INQUIRY             as _APPLICANT   on _APPLICANT.ApplicantUuid = $projection.EmployeeUuid
+ 
 
 {
   key EmployeeUuid,
@@ -17,9 +20,7 @@ define root view entity ZSLAN_C_EMPLOYEE
       @Search.defaultSearchElement: true
       @Search.fuzzinessThreshold: 0.7
       LastName,
-      @Search.defaultSearchElement: true
-      @Search.fuzzinessThreshold: 0.7
-      full_name,
+
       @Search.defaultSearchElement: true
       EntryDate,
       CreatedBy,
@@ -27,7 +28,11 @@ define root view entity ZSLAN_C_EMPLOYEE
       LastChangedBy,
       LastChangedAt,
       /* Associations */
-      _Claims
+      _Claim,
+      _APPROVER,
+      _APPLICANT
+      
+      
      
       
 }
