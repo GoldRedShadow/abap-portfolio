@@ -1,0 +1,58 @@
+@Metadata.layer: #CUSTOMER
+@UI.headerInfo:
+{
+    typeNamePlural: 'Urlaubsanträge',
+    typeName: 'Urlaubsantrag',
+    title.value: 'INQUIRYUuid',
+    description.value: 'CommentText'
+}
+
+annotate entity ZSLAN_C_VA_INQUIRY with
+{
+  @UI.facet:
+  [
+  { position: 10, targetQualifier: 'UrlaubsantragDetails', label: 'UrlaubsantragDetails', type: #FIELDGROUP_REFERENCE },
+  { position: 20, targetQualifier: 'ApproverData', label: 'Approver Data', type: #FIELDGROUP_REFERENCE}  ]
+  
+  
+  @UI.fieldGroup: [{ position: 10, qualifier: 'ApproverData' }]
+  InquiryUuid;
+
+
+  @UI.lineItem: [{ position: 10 }]
+  @UI.fieldGroup: [{ position: 20, qualifier: 'UrlaubsantragDetails' }]
+  _applicant;
+
+  @UI.lineItem: [{ position: 30 }]
+  @UI.selectionField: [{ position: 20 }]
+  @UI.fieldGroup: [{ position: 30, qualifier: 'UrlaubsantragDetails' }]
+  BeginDate;
+
+  @UI.lineItem: [{ position: 40 }]
+  @UI.selectionField: [{ position: 30 }]
+  @UI.fieldGroup: [{ position: 40, qualifier: 'UrlaubsantragDetails' }]
+  EndDate;
+  
+  @UI.lineItem: [{ position: 50 }]
+  @UI.selectionField: [{ position: 40 }]
+  @UI.fieldGroup: [{ position: 50, qualifier: 'UrlaubsantragDetails' }]
+  VacationDays;
+  
+  @UI.lineItem: [{ position: 60 }]
+  @UI.selectionField: [{ position: 50 }]
+  @UI.fieldGroup: [{ position: 60, qualifier: 'UrlaubsantragDetails' }]
+  _approver;
+  
+  @UI.lineItem: [{ position: 70 }]
+  @UI.selectionField: [{ position: 60 }]
+  @UI.fieldGroup: [{ position: 70, qualifier: 'UrlaubsantragDetails' }]
+  CommentText;
+  
+  @UI.lineItem: [{ position: 80 }]
+  @UI.selectionField: [{ position: 70 }]
+  @UI.fieldGroup: [{ position: 80, qualifier: 'UrlaubsantragDetails' }]
+  Status;
+  
+
+
+}

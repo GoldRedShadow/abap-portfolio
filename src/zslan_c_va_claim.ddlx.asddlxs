@@ -20,7 +20,7 @@ annotate entity ZSLAN_C_VA_CLAIM with
 
 
   @UI.lineItem: [{ position: 10 }]
-    @UI.fieldGroup: [{ position: 20, qualifier: 'EmployeeDetails' }]
+  @UI.fieldGroup: [{ position: 20, qualifier: 'EmployeeDetails' }]
   EmployeeName;
 
   @UI.lineItem: [{ position: 30 }]

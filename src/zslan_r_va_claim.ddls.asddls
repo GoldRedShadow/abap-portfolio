@@ -8,6 +8,7 @@ association to parent ZSLAN_R_EMPLOYEE as _Claim
     
 {
     key claim_uuid as ClaimUuid,
+    @ObjectModel.text.element: ['Employeename']
     employee_uuid as EmployeeUuid,
     year_of_claim as YearOfClaim,
     vacation_days as VacationDays,
