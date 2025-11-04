@@ -7,7 +7,10 @@
 "ZSLAN_EMPLOYEE"
 ],
 "ASSOCIATED":
-[],
+[
+"ZSLAN_R_VA_CLAIM",
+"ZSLAN_R_VA_INQUIRY"
+],
 "BASE":
 [],
 "ANNO_REF":

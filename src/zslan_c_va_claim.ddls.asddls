@@ -15,8 +15,8 @@ define view entity ZSLAN_C_VA_CLAIM as projection on ZSLAN_R_VA_CLAIM
     CreatedAt,
     LastChangedBy,
     LastChangedAt,
-    EmployeeName,
+    EmployeeName
     /* Associations */
-    _Claim
+    
     
     }

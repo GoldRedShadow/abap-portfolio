@@ -1,58 +1,37 @@
 @Metadata.layer: #CUSTOMER
-@UI.headerInfo:
-{
+@UI.headerInfo: {
     typeNamePlural: 'Urlaubsanträge',
     typeName: 'Urlaubsantrag',
-    title.value: 'INQUIRYUuid',
+    title.value: 'ApplicantName',
     description.value: 'CommentText'
 }
-
 annotate entity ZSLAN_C_VA_INQUIRY with
 {
-  @UI.facet:
-  [
-  { position: 10, targetQualifier: 'UrlaubsantragDetails', label: 'UrlaubsantragDetails', type: #FIELDGROUP_REFERENCE },
-  { position: 20, targetQualifier: 'ApproverData', label: 'Approver Data', type: #FIELDGROUP_REFERENCE}  ]
+  @UI.selectionField: [{ position: 10 }]
+  @UI.lineItem: [{ position: 10, label: 'Antragsteller' }]
+  ApplicantName;
+
   
-  
-  @UI.fieldGroup: [{ position: 10, qualifier: 'ApproverData' }]
-  InquiryUuid;
 
-
-  @UI.lineItem: [{ position: 10 }]
-  @UI.fieldGroup: [{ position: 20, qualifier: 'UrlaubsantragDetails' }]
-  _applicant;
-
-  @UI.lineItem: [{ position: 30 }]
-  @UI.selectionField: [{ position: 20 }]
-  @UI.fieldGroup: [{ position: 30, qualifier: 'UrlaubsantragDetails' }]
+  @UI.lineItem: [{ position: 20, label: 'Beginn' }]
   BeginDate;
 
-  @UI.lineItem: [{ position: 40 }]
-  @UI.selectionField: [{ position: 30 }]
-  @UI.fieldGroup: [{ position: 40, qualifier: 'UrlaubsantragDetails' }]
+  @UI.lineItem: [{ position: 30, label: 'Ende' }]
   EndDate;
-  
-  @UI.lineItem: [{ position: 50 }]
-  @UI.selectionField: [{ position: 40 }]
-  @UI.fieldGroup: [{ position: 50, qualifier: 'UrlaubsantragDetails' }]
+
+  @UI.lineItem: [{ position: 40, label: 'Tage' }]
   VacationDays;
   
-  @UI.lineItem: [{ position: 60 }]
-  @UI.selectionField: [{ position: 50 }]
-  @UI.fieldGroup: [{ position: 60, qualifier: 'UrlaubsantragDetails' }]
-  _approver;
-  
-  @UI.lineItem: [{ position: 70 }]
-  @UI.selectionField: [{ position: 60 }]
-  @UI.fieldGroup: [{ position: 70, qualifier: 'UrlaubsantragDetails' }]
+  @UI.selectionField: [{ position: 20 }]
+  @UI.lineItem: [{ position: 50, label: 'Genehmiger' }]
+  ApproverName;
+
+  @UI.lineItem: [{ position: 60, label: 'Kommentar' }]
   CommentText;
-  
-  @UI.lineItem: [{ position: 80 }]
-  @UI.selectionField: [{ position: 70 }]
-  @UI.fieldGroup: [{ position: 80, qualifier: 'UrlaubsantragDetails' }]
+
+  @UI.selectionField: [{ position: 30 }]
+  @UI.lineItem: [{ position: 70, label: 'Status' }]
   Status;
+ 
   
-
-
 }
