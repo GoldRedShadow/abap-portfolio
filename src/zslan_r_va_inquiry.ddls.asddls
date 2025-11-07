@@ -2,6 +2,7 @@
 @EndUserText.label: 'Vacation Inquiry Basic View'
 define root view entity ZSLAN_R_VA_INQUIRY
   as select from zslan_va_inquiry
+  
   association [1..1] to ZSLAN_i_EmployeeText as _ApplicantText on $projection.ApplicantUuid = _ApplicantText.EmployeeUuid
   association [1..1] to ZSLAN_i_EmployeeText as _ApproverText  on $projection.ApproverUuid = _ApproverText.EmployeeUuid
 {

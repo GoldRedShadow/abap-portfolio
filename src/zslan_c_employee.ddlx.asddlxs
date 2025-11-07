@@ -10,7 +10,7 @@ annotate entity ZSLAN_C_EMPLOYEE with
 {
   @UI.facet: [
     { position: 10, targetQualifier: 'EmployeeDetails', label: 'Mitarbeiterdetails', type: #FIELDGROUP_REFERENCE },
-    { position: 20, targetElement: '_APPLICANT', label: 'Eigene Urlaubsanträge', type: #LINEITEM_REFERENCE },
+    { position: 20, targetElement: '_Applicant', label: 'Eigene Urlaubsanträge', type: #LINEITEM_REFERENCE },
     { position: 30, targetElement: '_Claim',     label: 'Urlaubsanspruch', type: #LINEITEM_REFERENCE },
     { position: 40, targetQualifier: 'AdminData', label: 'Administrative Daten', type: #FIELDGROUP_REFERENCE }
   ]

@@ -7,11 +7,13 @@
 }
 annotate entity ZSLAN_C_VA_INQUIRY with
 {
+  @UI.facet: [
+    { position: 10, targetQualifier: 'AdminData', label: 'Administrative Daten', type: #FIELDGROUP_REFERENCE }
+  ]
+  
   @UI.selectionField: [{ position: 10 }]
   @UI.lineItem: [{ position: 10, label: 'Antragsteller' }]
   ApplicantName;
-
-  
 
   @UI.lineItem: [{ position: 20, label: 'Beginn' }]
   BeginDate;
@@ -21,7 +23,7 @@ annotate entity ZSLAN_C_VA_INQUIRY with
 
   @UI.lineItem: [{ position: 40, label: 'Tage' }]
   VacationDays;
-  
+
   @UI.selectionField: [{ position: 20 }]
   @UI.lineItem: [{ position: 50, label: 'Genehmiger' }]
   ApproverName;
@@ -32,6 +34,17 @@ annotate entity ZSLAN_C_VA_INQUIRY with
   @UI.selectionField: [{ position: 30 }]
   @UI.lineItem: [{ position: 70, label: 'Status' }]
   Status;
- 
+
+  @UI.fieldGroup: [{ position: 10, qualifier: 'AdminData' }]
+  CreatedBy;
   
+  @UI.fieldGroup: [{ position: 20, qualifier: 'AdminData' }]
+  CreatedAt;
+  
+  @UI.fieldGroup: [{ position: 30, qualifier: 'AdminData' }]
+  LastChangedBy;
+  
+  @UI.fieldGroup: [{ position: 40, qualifier: 'AdminData' }]
+  LastChangedAt;   
+
 }

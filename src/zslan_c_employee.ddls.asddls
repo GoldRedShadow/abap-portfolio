@@ -5,12 +5,6 @@
 define root view entity ZSLAN_C_EMPLOYEE
   as projection on ZSLAN_R_EMPLOYEE
 
-  association [0..*] to ZSLAN_C_VA_CLAIM             as _Claim    on _Claim.EmployeeUuid = $projection.EmployeeUuid
-  association [0..*] to ZSLAN_C_VA_INQUIRY             as _APPROVER   on _APPROVER.ApproverUuid = $projection.EmployeeUuid
-  association [0..*] to ZSLAN_C_VA_INQUIRY             as _APPLICANT   on _APPLICANT.ApplicantUuid = $projection.EmployeeUuid
-  
- 
-
 {
   key EmployeeUuid,
       @Search.defaultSearchElement: true
@@ -28,11 +22,13 @@ define root view entity ZSLAN_C_EMPLOYEE
       CreatedAt,
       LastChangedBy,
       LastChangedAt,
+
       /* Associations */
-      _Claim,
-      _APPROVER,
-      _APPLICANT
       
-     
-      
+      _Approver,
+      _Applicant,
+      _Claim : redirected to composition child ZSLAN_C_VA_CLAIM
+
+
+
 }

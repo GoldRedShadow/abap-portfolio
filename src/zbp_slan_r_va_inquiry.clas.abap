@@ -1,5 +1,0 @@
-CLASS zbp_slan_r_va_inquiry DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zslan_r_va_inquiry.
-ENDCLASS.
-
-CLASS zbp_slan_r_va_inquiry IMPLEMENTATION.
-ENDCLASS.
