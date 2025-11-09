@@ -6,9 +6,10 @@ define view entity ZSLAN_R_VA_CLAIM
   association [1..1] to ZSLAN_i_EmployeeText    as _EmployeeText on $projection.EmployeeUuid = _EmployeeText.EmployeeUuid
 
 
+
 {
   key claim_uuid         as ClaimUuid,
-      @ObjectModel.text.element: ['Employeename']
+      @ObjectModel.text.element: ['EmployeeName']
       employee_uuid      as EmployeeUuid,
       year_of_claim      as YearOfClaim,
       vacation_days      as VacationDays,

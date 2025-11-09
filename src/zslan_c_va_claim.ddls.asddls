@@ -17,5 +17,4 @@ define view entity ZSLAN_C_VA_CLAIM
       EmployeeName,
       /* Associations */
       _Employee : redirected to parent ZSLAN_C_EMPLOYEE
-
 }

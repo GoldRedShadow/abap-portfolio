@@ -1,32 +1,47 @@
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 @EndUserText.label: 'Vacation Inquiry Basic View'
-define root view entity ZSLAN_R_VA_INQUIRY
+define view entity ZSLAN_R_VA_INQUIRY
   as select from zslan_va_inquiry
-  
-  association [1..1] to ZSLAN_i_EmployeeText as _ApplicantText on $projection.ApplicantUuid = _ApplicantText.EmployeeUuid
-  association [1..1] to ZSLAN_i_EmployeeText as _ApproverText  on $projection.ApproverUuid = _ApproverText.EmployeeUuid
+  association        to parent ZSLAN_R_EMPLOYEE as _Applicant             on $projection.ApplicantUuid = _Applicant.EmployeeUuid
+  association [1..1] to ZSLAN_R_EMPLOYEE        as _Approver              on $projection.ApproverUuid = _Approver.EmployeeUuid
+  association [1..1] to ZSLAN_i_EmployeeText    as _EmployeeNameApplicant on $projection.ApplicantUuid = _EmployeeNameApplicant.EmployeeUuid
+  association [1..1] to ZSLAN_i_EmployeeText    as _EmployeeNameApprover  on $projection.ApproverUuid = _EmployeeNameApprover.EmployeeUuid
+
 {
-  key inquiry_uuid        as InquiryUuid,
+  key inquiry_uuid                as InquiryUuId,
 
-      @ObjectModel.text.element: ['ApplicantName']
-      applicant_uuid      as ApplicantUuid,
+      applicant_uuid              as ApplicantUuid,
 
-      @ObjectModel.text.element: ['ApproverName']
-      approver_uuid       as ApproverUuid,
+      approver_uuid               as ApproverUuid,
+      begin_date                  as BeginDate,
+      end_date                    as EndDate,
+      status                      as Status,
+      comment_text                as CommentText,
+      vacation_days               as vacationdays,
 
-      _ApplicantText.Name as ApplicantName,
-      _ApproverText.Name  as ApproverName,
+      /* Administrative Data */
+      @Semantics.user.createdBy: true
+      created_by                  as CreatedBy,
+      @Semantics.systemDateTime.createdAt: true
+      created_at                  as CreatedAt,
+      @Semantics.user.lastChangedBy: true
+      last_changed_by             as LastChangedBy,
+      @Semantics.systemDateTime.lastChangedAt: true
+      last_changed_at             as LastChangedAt,
 
-      begin_date          as BeginDate,
-      end_date            as EndDate,
-      vacation_days       as VacationDays,
-      comment_text        as CommentText,
-      status              as Status,
 
-      /* Admin-Daten */
-      created_by          as CreatedBy,
-      created_at          as CreatedAt,
-      last_changed_by     as LastChangedBy,
-      last_changed_at     as LastChangedAt
+      case status when 'G' then 3
+            when 'B' then 2
+            when 'A' then 1
+            else 0
+      end                         as StatusCriticality,
 
+
+      _EmployeeNameApplicant.Name as ApplicantName,
+      _EmployeeNameApprover.Name  as ApproverName,
+
+
+      /*Associations*/
+      _Applicant,
+      _Approver
 }

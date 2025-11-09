@@ -1,0 +1,5 @@
+CLASS zslan_bp_r_employee DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zslan_r_employee.
+ENDCLASS.
+
+CLASS zslan_bp_r_employee IMPLEMENTATION.
+ENDCLASS.
