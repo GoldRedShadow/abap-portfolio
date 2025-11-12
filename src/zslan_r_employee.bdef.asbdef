@@ -5,7 +5,7 @@ strict ( 2 );
 define behavior for ZSLAN_R_EMPLOYEE //alias <alias_name>
 persistent table zslan_employee
 lock master
-authorization master ( none )
+authorization master ( instance )
 //etag master <field_name>
 {
   create;
@@ -80,6 +80,7 @@ lock dependent by _applicant
 authorization dependent by _applicant
 //etag master <field_name>
 {
+
   update;
   delete;
 
@@ -101,6 +102,7 @@ authorization dependent by _applicant
 
   mapping for zslan_va_inquiry corresponding
     {
+      inquiryuuid = inquiry_uuid;
       ApplicantUuid = applicant_uuid;
       ApproverUuid  = approver_uuid;
       BeginDate     = begin_date;

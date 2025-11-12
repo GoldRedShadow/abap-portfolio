@@ -1,6 +1,9 @@
 CLASS lhc_Employee DEFINITION INHERITING FROM cl_abap_behavior_handler.
   PRIVATE SECTION.
 
+
+mETHODS get_instance_authorization for instance authorization
+importing keys request requested_authorization for zslan_r_employee result result.
     METHODS ApproveVacationRequest FOR MODIFY
       IMPORTING keys FOR ACTION zslan_R_VA_INQUIRY~ApproveVacationRequest RESULT result.
 
@@ -23,6 +26,8 @@ ENDCLASS.
 
 CLASS lhc_Employee IMPLEMENTATION.
 
+method get_instance_authorization.
+endmethod.
   METHOD ApproveVacationRequest.
     DATA message TYPE REF TO zslan_CM_VAINQUIRY.
 

@@ -27,7 +27,7 @@ provider contract transactional_query
 
       /* Associations */
       
-      _Claim : redirected to ZSLAN_C_VA_CLAIM,
+      _Claim : redirected to composition child ZSLAN_C_VA_CLAIM,
       _Inquiry  : redirected to composition child ZSLAN_C_VA_INQUIRY
 
 

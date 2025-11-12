@@ -7,7 +7,6 @@ define behavior for ZSLAN_C_EMPLOYEE //alias <alias_name>
   use update;
   use delete;
 
-
   use association _Inquiry { create; }
 }
 

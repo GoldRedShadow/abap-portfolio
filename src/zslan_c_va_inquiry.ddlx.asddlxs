@@ -15,33 +15,34 @@ annotate entity ZSLAN_C_VA_INQUIRY with
 
   @UI.selectionField: [{ position: 10 }]
   @UI.lineItem: [{ position: 10, label: 'Antragsteller' }]
-  @UI.fieldGroup: [{ position: 20, qualifier: 'InquiryData' }]
+  @UI.fieldGroup: [{ position: 10, qualifier: 'InquiryData' }]
   ApplicantName;
+  
 
   @UI.lineItem: [{ position: 20, label: 'Beginn' }]
-  @UI.fieldGroup: [{ position: 30, qualifier: 'InquiryData' }]
+  @UI.fieldGroup: [{ position: 20, qualifier: 'InquiryData' }]
   BeginDate;
 
   @UI.lineItem: [{ position: 30, label: 'Ende' }]
-  @UI.fieldGroup: [{ position: 40, qualifier: 'InquiryData' }]
+  @UI.fieldGroup: [{ position: 30, qualifier: 'InquiryData' }]
   EndDate;
 
   @UI.lineItem: [{ position: 40, label: 'Tage' }]
-  @UI.fieldGroup: [{ position: 50, qualifier: 'InquiryData' }]
+  @UI.fieldGroup: [{ position: 40, qualifier: 'InquiryData' }]
   vacationdays;
 
   @UI.selectionField: [{ position: 20 }]
   @UI.lineItem: [{ position: 50, label: 'Genehmiger' }]
-  @UI.fieldGroup: [{ position: 60, qualifier: 'InquiryData' }]
+  @UI.fieldGroup: [{ position: 50, qualifier: 'InquiryData' }]
   ApproverName;
 
   @UI.lineItem: [{ position: 60, label: 'Kommentar' }]
-  @UI.fieldGroup: [{ position: 70, qualifier: 'InquiryData' }]
+  @UI.fieldGroup: [{ position: 60, qualifier: 'InquiryData' }]
   CommentText;
 
   @UI.selectionField: [{ position: 30 }]
   @UI.lineItem: [{ position: 70, label: 'Status' }]
-  @UI.fieldGroup: [{ position: 80, qualifier: 'InquiryData' }]
+  @UI.fieldGroup: [{ position: 70, qualifier: 'InquiryData' }]
   Status;
 
   @UI.fieldGroup: [{ position: 10, qualifier: 'AdminData' }]
