@@ -30,6 +30,7 @@ define root view entity ZSLAN_R_EMPLOYEE
       _Claim,
       _Approver,
       _Applicant,
+      @UI.lineItem: [{ position: 10 }]
       _Inquiry,
 
       _EmployeeText.Name                 as EmployeeName

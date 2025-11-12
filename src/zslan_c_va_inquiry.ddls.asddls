@@ -2,6 +2,7 @@
 @EndUserText.label: 'Projection View Urlaubsantrag'
 @Metadata.allowExtensions: true
 @Search.searchable: true
+
 define view entity ZSLAN_C_VA_INQUIRY
   as projection on ZSLAN_R_VA_INQUIRY
 {

@@ -27,7 +27,7 @@ CLASS lhc_Employee IMPLEMENTATION.
     DATA message TYPE REF TO zslan_CM_VAINQUIRY.
 
     " Read Inquiry
-    READ ENTITY IN LOCAL MODE ZSLAN_R_VA_INQUIRY
+    READ ENTITY IN LOCAL MODE zslan_r_va_inquiry
          FIELDS ( Status CommentText )
          WITH CORRESPONDING #( keys )
          RESULT DATA(vacrequests).
@@ -60,16 +60,16 @@ CLASS lhc_Employee IMPLEMENTATION.
 
       " Set State to G und Create Success Message
       vacrequest->Status = 'G'.
-           message = NEW zslan_cm_vainquiry(
-                textid = zslan_cm_vainquiry=>vacrequest_approved
-               severity = if_abap_behv_message=>severity-success
-              comment = vacrequest->CommentText
-         ).
-       APPEND VALUE #( %tky = vacrequest->%tky %msg = message ) TO reported-zslan_r_va_inquiry.
+      message = NEW zslan_cm_vainquiry(
+           textid = zslan_cm_vainquiry=>vacrequest_approved
+          severity = if_abap_behv_message=>severity-success
+         comment = vacrequest->CommentText
+    ).
+      APPEND VALUE #( %tky = vacrequest->%tky %msg = message ) TO reported-zslan_r_va_inquiry.
     ENDLOOP.
 
     " Modify Inquiry
-    MODIFY ENTITY IN LOCAL MODE ZSLAN_R_VA_INQUIRY
+    MODIFY ENTITY IN LOCAL MODE zslan_r_va_inquiry
            UPDATE FIELDS ( Status )
            WITH VALUE #( FOR lr IN vacrequests
                          ( %tky = lr-%tky Status = lr-Status ) ).
@@ -93,11 +93,11 @@ CLASS lhc_Employee IMPLEMENTATION.
 
       " Validate State and Create Error Message
       IF vacrequest->Status = 'A'.
-       message = NEW zslan_cm_vainquiry(
-           textid = zslan_cm_vainquiry=>vacrequest_already_declined
-            severity = if_abap_behv_message=>severity-error
-            comment  = vacrequest->CommentText
-        ).
+        message = NEW zslan_cm_vainquiry(
+            textid = zslan_cm_vainquiry=>vacrequest_already_declined
+             severity = if_abap_behv_message=>severity-error
+             comment  = vacrequest->CommentText
+         ).
         APPEND VALUE #( %tky = vacrequest->%tky %msg = message ) TO reported-zslan_r_va_inquiry.
         APPEND VALUE #( %tky = vacrequest->%tky ) TO failed-zslan_r_va_inquiry.
         DELETE vacrequests INDEX sy-tabix.
@@ -118,11 +118,11 @@ CLASS lhc_Employee IMPLEMENTATION.
 
       " Set State to A und Create Success Message
       vacrequest->Status = 'A'.
-        message = NEW zslan_cm_vainquiry(
-           textid = zslan_cm_vainquiry=>vacrequest_decline
-           severity = if_abap_behv_message=>severity-success
-           comment = vacrequest->CommentText
-        ).
+      message = NEW zslan_cm_vainquiry(
+         textid = zslan_cm_vainquiry=>vacrequest_decline
+         severity = if_abap_behv_message=>severity-success
+         comment = vacrequest->CommentText
+      ).
       APPEND VALUE #( %tky = vacrequest->%tky %msg = message ) TO reported-zslan_r_va_inquiry.
     ENDLOOP.
 
@@ -136,7 +136,7 @@ CLASS lhc_Employee IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD DetermineStatus.
-      " Read Inquiries
+    " Read Inquiries
     READ ENTITY IN LOCAL MODE zslan_r_va_inquiry
          FIELDS ( Status )
          WITH CORRESPONDING #( keys )
@@ -157,28 +157,28 @@ CLASS lhc_Employee IMPLEMENTATION.
          WITH CORRESPONDING #( keys )
          RESULT DATA(vacrequests).
 
-      Loop at vacrequests into data(vacrequest).
+    LOOP AT vacrequests INTO DATA(vacrequest).
 
-    DATA(begindate) = vacrequest-Begindate.
-    begindate = begindate - 1.
-    try.
-    DATA(calendar) = cl_fhc_calendar_runtime=>create_factorycalendar_runtime( 'SAP_DE_BW' ).
-    DATA(working_days) = calendar->calc_workingdays_between_dates( iv_start = begindate iv_end = vacrequest-EndDate ).
-    catch cx_fhc_runtime.
-    endtry.
+      DATA(begindate) = vacrequest-Begindate.
+      begindate = begindate - 1.
+      TRY.
+          DATA(calendar) = cl_fhc_calendar_runtime=>create_factorycalendar_runtime( 'SAP_DE_BW' ).
+          DATA(working_days) = calendar->calc_workingdays_between_dates( iv_start = begindate iv_end = vacrequest-EndDate ).
+        CATCH cx_fhc_runtime.
+      ENDTRY.
 
-    MODIFY ENTITY IN LOCAL MODE zslan_r_va_inquiry
-           UPDATE FIELDS ( Vacationdays )
-           WITH VALUE #( FOR vr IN vacrequests
-                         ( %tky   = vr-%tky
-                           vacationdays = working_days ) ).
-     endloop.
+      MODIFY ENTITY IN LOCAL MODE zslan_r_va_inquiry
+             UPDATE FIELDS ( Vacationdays )
+             WITH VALUE #( FOR vr IN vacrequests
+                           ( %tky   = vr-%tky
+                             vacationdays = working_days ) ).
+    ENDLOOP.
   ENDMETHOD.
 
   METHOD ValidateDates.
     DATA message TYPE REF TO zslan_cm_vainquiry.
-      DATA(lo_context_info) = NEW cl_abap_context_info( ).
-      DATA(lv_current_date) = lo_context_info->get_system_date( ).
+    DATA(lo_context_info) = NEW cl_abap_context_info( ).
+    DATA(lv_current_date) = lo_context_info->get_system_date( ).
 
     " Read Travels
     READ ENTITY IN LOCAL MODE zslan_r_va_inquiry
@@ -198,17 +198,17 @@ CLASS lhc_Employee IMPLEMENTATION.
       ENDIF.
 
       IF vacrequest-BeginDate < lv_current_date.
-                message = NEW zslan_cm_vainquiry( textid = zslan_cm_vainquiry=>vacrequest_startdatepast
-                severity = if_abap_behv_message=>severity-error ).
+        message = NEW zslan_cm_vainquiry( textid = zslan_cm_vainquiry=>vacrequest_startdatepast
+        severity = if_abap_behv_message=>severity-error ).
         APPEND VALUE #( %tky = vacrequest-%tky
                         %msg = message ) TO reported-zslan_r_va_inquiry.
         APPEND VALUE #( %tky = vacrequest-%tky ) TO failed-zslan_r_va_inquiry.
-      endif.
+      ENDIF.
     ENDLOOP.
   ENDMETHOD.
 
   METHOD ValidateVacDays.
-     DATA message TYPE REF TO zslan_cm_vainquiry.
+    DATA message TYPE REF TO zslan_cm_vainquiry.
 
     " Read Travels
     READ ENTITY IN LOCAL MODE zslan_r_va_inquiry

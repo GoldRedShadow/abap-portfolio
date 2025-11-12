@@ -12,8 +12,11 @@ authorization master ( none )
   update;
   delete;
 
-  association _Claim { create; }
+  association _Claim;
   association _Inquiry { create; }
+  association _Applicant;
+  association _Approver;
+
 
   field ( readonly, numbering : managed ) EmployeeUuId;
 
@@ -34,6 +37,7 @@ authorization master ( none )
       CreatedAt     = created_at;
       LastChangedBy = last_changed_by;
       LastChangedAt = last_changed_at;
+
     }
 }
 
@@ -79,11 +83,8 @@ authorization dependent by _applicant
   update;
   delete;
 
-
   association _applicant;
   association _approver;
-
-
 
   action DeclineVacationRequest result [1] $self;
   action ApproveVacationRequest result [1] $self;
@@ -98,19 +99,19 @@ authorization dependent by _applicant
   field ( mandatory : create ) ApproverUuid, BeginDate, EndDate;
   field ( readonly ) ApplicantUuid, CreatedAt, CreatedBy, LastChangedAt, LastChangedBy, Status, vacationdays;
 
-  mapping for zslan_c_va_inquiry corresponding
+  mapping for zslan_va_inquiry corresponding
     {
-      ApplicantUuid = applicantuuid;
-      ApproverUuid  = approveruuid;
-      BeginDate     = BeginDate;
-      EndDate       = enddate;
+      ApplicantUuid = applicant_uuid;
+      ApproverUuid  = approver_uuid;
+      BeginDate     = begin_date;
+      EndDate       = end_date;
       Status        = status;
-      CommentText   = commenttext;
-      CreatedBy     = createdby;
-      CreatedAt     = createdat;
-      LastChangedBy = lastchangedby;
-      LastChangedAt = lastchangedat;
-      vacationdays  = vacationdays;
+      CommentText   = comment_text;
+      CreatedBy     = created_by;
+      CreatedAt     = created_at;
+      LastChangedBy = last_changed_by;
+      LastChangedAt = last_changed_at;
+      vacationdays  = vacation_days;
     }
 
 
