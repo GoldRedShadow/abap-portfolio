@@ -6,6 +6,7 @@ define view entity ZSLAN_R_VA_INQUIRY
   association [1..1] to ZSLAN_R_EMPLOYEE        as _Approver              on $projection.ApproverUuid = _Approver.EmployeeUuid
   association [1..1] to ZSLAN_i_EmployeeText    as _EmployeeNameApplicant on $projection.ApplicantUuid = _EmployeeNameApplicant.EmployeeUuid
   association [1..1] to ZSLAN_i_EmployeeText    as _EmployeeNameApprover  on $projection.ApproverUuid = _EmployeeNameApprover.EmployeeUuid
+  association        to ZSLAN_I_StatusText         as _statustext        on $projection.InquiryUuId = _statustext.inquiry_uuid
 
 {
   key inquiry_uuid                as InquiryUuId,
@@ -39,6 +40,8 @@ define view entity ZSLAN_R_VA_INQUIRY
 
       _EmployeeNameApplicant.Name as ApplicantName,
       _EmployeeNameApprover.Name  as ApproverName,
+      _statustext.StatusText  as StatusText,
+      
 
 
       /*Associations*/

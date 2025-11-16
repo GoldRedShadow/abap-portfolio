@@ -24,6 +24,9 @@ provider contract transactional_query
       CreatedAt,
       LastChangedBy,
       LastChangedAt,
+      AvailableVacationDays,
+      ConsumedVacationDays,
+      PlannedVacationDays,
 
       /* Associations */
       

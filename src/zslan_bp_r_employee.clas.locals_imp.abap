@@ -2,8 +2,11 @@ CLASS lhc_Employee DEFINITION INHERITING FROM cl_abap_behavior_handler.
   PRIVATE SECTION.
 
 
-mETHODS get_instance_authorization for instance authorization
-importing keys request requested_authorization for zslan_r_employee result result.
+    METHODS get_global_authorization FOR GLOBAL AUTHORIZATION
+      IMPORTING REQUEST requested_authorization FOR zslan_r_employee RESULT result.
+      METHODS get_global_authorization_i FOR GLOBAL AUTHORIZATION
+      IMPORTING REQUEST requested_authorization FOR zslan_r_va_inquiry RESULT result.
+
     METHODS ApproveVacationRequest FOR MODIFY
       IMPORTING keys FOR ACTION zslan_R_VA_INQUIRY~ApproveVacationRequest RESULT result.
 
@@ -26,8 +29,10 @@ ENDCLASS.
 
 CLASS lhc_Employee IMPLEMENTATION.
 
-method get_instance_authorization.
-endmethod.
+  METHOD get_global_authorization.
+  ENDMETHOD.
+  METHOD get_global_authorization_i.
+  Endmethod.
   METHOD ApproveVacationRequest.
     DATA message TYPE REF TO zslan_CM_VAINQUIRY.
 
@@ -152,7 +157,7 @@ endmethod.
            UPDATE FIELDS ( Status )
            WITH VALUE #( FOR vr IN vacrequests
                          ( %tky   = vr-%tky
-                           Status = 'R' ) ).
+                           Status = 'B' ) ).
   ENDMETHOD.
 
   METHOD DetermineVacationDays.

@@ -5,12 +5,9 @@ strict ( 2 );
 define behavior for ZSLAN_R_EMPLOYEE //alias <alias_name>
 persistent table zslan_employee
 lock master
-authorization master ( instance )
+authorization master ( global )
 //etag master <field_name>
 {
-  create;
-  update;
-  delete;
 
   association _Claim;
   association _Inquiry { create; }
@@ -47,8 +44,7 @@ lock dependent by _Employee
 authorization dependent by _Employee
 //etag master <field_name>
 {
-  update;
-  delete;
+
 
   association _Employee;
 
@@ -97,8 +93,8 @@ authorization dependent by _applicant
   determination DetermineVacationDays on modify { field begindate, enddate; }
 
   field ( readonly, numbering : managed ) InquiryUuId;
-  field ( mandatory : create ) ApproverUuid, BeginDate, EndDate;
-  field ( readonly ) ApplicantUuid, CreatedAt, CreatedBy, LastChangedAt, LastChangedBy, Status, vacationdays;
+  field ( mandatory : create ) BeginDate, EndDate, ApproverUuid;
+  field ( readonly ) ApproverName, ApplicantName, ApplicantUuid, CreatedAt, CreatedBy, LastChangedAt, LastChangedBy, Status, vacationdays;
 
   mapping for zslan_va_inquiry corresponding
     {

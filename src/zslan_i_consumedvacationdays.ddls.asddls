@@ -2,7 +2,7 @@
 @AbapCatalog.sqlViewName: 'ZSLAN_I_CONSUME'
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 @EndUserText.label: 'Interface View Consumed Vacation Days'
-define view ZSLAN_I_CONSUMEDVACATIONDAYS as select from zslan_va_inquiry
+define view ZSLAN_I_CONSUMEDVACATIONDAYS as select from zslan_va_inquiry 
 {
      applicant_uuid as employee,
      sum(
@@ -16,6 +16,6 @@ define view ZSLAN_I_CONSUMEDVACATIONDAYS as select from zslan_va_inquiry
         end)       
  as ConsumedVacationDays
 }
-where status = 'A'
+where status = 'G'
 group by
 applicant_uuid;

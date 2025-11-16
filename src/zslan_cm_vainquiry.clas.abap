@@ -11,7 +11,7 @@ CLASS zslan_CM_VAINQUIRY DEFINITION PUBLIC
 
     CONSTANTS:
       BEGIN OF vacrequest_decline,
-        msgid TYPE symsgid      VALUE 'ZSLAN_C_VA_INQUIRY',
+        msgid TYPE symsgid      VALUE 'ZSLAN_VA_INQUIRY',
         msgno TYPE symsgno      VALUE '001',
         attr1 TYPE scx_attrname VALUE 'Comment',
         attr2 TYPE scx_attrname VALUE '',
@@ -21,7 +21,7 @@ CLASS zslan_CM_VAINQUIRY DEFINITION PUBLIC
 
     CONSTANTS:
       BEGIN OF vacrequest_already_declined,
-        msgid TYPE symsgid      VALUE 'ZSLAN_C_VA_INQUIRY',
+        msgid TYPE symsgid      VALUE 'ZSLAN_VA_INQUIRY',
         msgno TYPE symsgno      VALUE '002',
         attr1 TYPE scx_attrname VALUE 'Comment',
         attr2 TYPE scx_attrname VALUE '',
@@ -31,7 +31,7 @@ CLASS zslan_CM_VAINQUIRY DEFINITION PUBLIC
 
     CONSTANTS:
       BEGIN OF vacrequest_approved,
-        msgid TYPE symsgid      VALUE 'ZSLAN_C_VA_INQUIRY',
+        msgid TYPE symsgid      VALUE 'ZSLAN_VA_INQUIRY',
         msgno TYPE symsgno      VALUE '003',
         attr1 TYPE scx_attrname VALUE 'Comment',
         attr2 TYPE scx_attrname VALUE '',
@@ -41,7 +41,7 @@ CLASS zslan_CM_VAINQUIRY DEFINITION PUBLIC
 
     CONSTANTS:
       BEGIN OF vacrequest_already_approved,
-        msgid TYPE symsgid      VALUE 'ZSLAN_C_VA_INQUIRY',
+        msgid TYPE symsgid      VALUE 'ZSLAN_VA_INQUIRY',
         msgno TYPE symsgno      VALUE '004',
         attr1 TYPE scx_attrname VALUE 'Comment',
         attr2 TYPE scx_attrname VALUE '',
@@ -51,7 +51,7 @@ CLASS zslan_CM_VAINQUIRY DEFINITION PUBLIC
 
     CONSTANTS:
       BEGIN OF vacrequest_endbeforestart,
-        msgid TYPE symsgid      VALUE 'ZSLAN_C_VA_INQUIRY',
+        msgid TYPE symsgid      VALUE 'ZSLAN_VA_INQUIRY',
         msgno TYPE symsgno      VALUE '005',
         attr1 TYPE scx_attrname VALUE 'Comment',
         attr2 TYPE scx_attrname VALUE '',
@@ -61,7 +61,7 @@ CLASS zslan_CM_VAINQUIRY DEFINITION PUBLIC
 
     CONSTANTS:
       BEGIN OF vacrequest_novacationleft,
-        msgid TYPE symsgid      VALUE 'ZSLAN_C_VA_INQUIRY',
+        msgid TYPE symsgid      VALUE 'ZSLAN_VA_INQUIRY',
         msgno TYPE symsgno      VALUE '006',
         attr1 TYPE scx_attrname VALUE 'Comment',
         attr2 TYPE scx_attrname VALUE '',
@@ -71,7 +71,7 @@ CLASS zslan_CM_VAINQUIRY DEFINITION PUBLIC
 
     CONSTANTS:
       BEGIN OF vacrequest_startdatepast,
-        msgid TYPE symsgid      VALUE 'ZSLAN_C_VA_INQUIRY',
+        msgid TYPE symsgid      VALUE 'ZSLAN_VA_INQUIRY',
         msgno TYPE symsgno      VALUE '007',
         attr1 TYPE scx_attrname VALUE 'Comment',
         attr2 TYPE scx_attrname VALUE '',
@@ -79,7 +79,7 @@ CLASS zslan_CM_VAINQUIRY DEFINITION PUBLIC
         attr4 TYPE scx_attrname VALUE '',
       END OF vacrequest_startdatepast.
 
-    " Attributs
+    " Attribute
     DATA Comment TYPE STRING.
 
     " Constructor
@@ -95,7 +95,11 @@ CLASS zslan_CM_VAINQUIRY DEFINITION PUBLIC
 
 ENDCLASS.
 
-CLASS zslan_CM_VAINQUIRY IMPLEMENTATION.
+
+
+CLASS ZSLAN_CM_VAINQUIRY IMPLEMENTATION.
+
+
   METHOD constructor ##ADT_SUPPRESS_GENERATION.
     super->constructor( previous = previous ).
 
@@ -103,5 +107,4 @@ CLASS zslan_CM_VAINQUIRY IMPLEMENTATION.
     if_abap_behv_message~m_severity = severity.
     me->comment = comment.
   ENDMETHOD.
-
 ENDCLASS.

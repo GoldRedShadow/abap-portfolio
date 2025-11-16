@@ -5,17 +5,25 @@
 
 define view entity ZSLAN_C_VA_INQUIRY
   as projection on ZSLAN_R_VA_INQUIRY
+  
+   
 {
     key InquiryUuId,
     ApplicantUuid,
+    @Search.defaultSearchElement: true
     ApplicantName,
+    @Consumption.valueHelpDefinition: [{ entity: { name: 'zslan_i_employeeuuidvh', element: 'EmployeeId' } }]
     ApproverUuid,
     ApproverName,
     BeginDate,
     EndDate,
     vacationdays,
     CommentText,
+    @ObjectModel.text.element: [ 'StatusText' ]
     Status,
+    StatusText,
+     
+    /* Administrative Daten */
     CreatedAt,
     CreatedBy,
     LastChangedAt,

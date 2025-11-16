@@ -12,6 +12,6 @@ else 0
 end) 
 as PlannedVacationDays
 }
-where status <> 'G'
+where status <> 'A'
 group by
 applicant_uuid;

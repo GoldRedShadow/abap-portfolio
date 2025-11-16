@@ -12,7 +12,8 @@ ENDCLASS.
 
 
 
-CLASS zslan_cl_employee_generator IMPLEMENTATION.
+CLASS ZSLAN_CL_EMPLOYEE_GENERATOR IMPLEMENTATION.
+
 
   METHOD if_oo_adt_classrun~main.
     DATA employee TYPE zslan_employee.
@@ -217,7 +218,4 @@ CLASS zslan_cl_employee_generator IMPLEMENTATION.
 
 
   ENDMETHOD.
-
-
-
 ENDCLASS.
