@@ -44,8 +44,9 @@ annotate entity ZSLAN_C_VA_INQUIRY_M
     @UI.fieldGroup: [ { position: 60, qualifier: 'InquiryData', label: 'Status' } ]
     Status;
     
-    @UI.lineItem: [ { position: 80, label: 'Approver' } ]
-    @UI.fieldGroup: [ { position: 70, qualifier: 'InquiryData', label: 'Approver' } ]
+    @UI.lineItem: [ { position: 80, label: 'Comment' } ]
+    @UI.selectionField: [ {position: 30} ]
+    @UI.fieldGroup: [ { position: 70, qualifier: 'InquiryData', label: 'Comment' } ]
     CommentText;
     
     @UI.fieldGroup: [{ position: 80, qualifier: 'AdminData' }]

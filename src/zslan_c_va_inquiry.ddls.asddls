@@ -12,7 +12,7 @@ define view entity ZSLAN_C_VA_INQUIRY
     ApplicantUuid,
     @Search.defaultSearchElement: true
     ApplicantName,
-    @Consumption.valueHelpDefinition: [{ entity: { name: 'zslan_i_employeeuuidvh', element: 'EmployeeId' } }]
+    @Consumption.valueHelpDefinition: [{ entity: { name: 'zslan_i_employeeuuidvh', element: 'EmployeeUuid' } }]
     ApproverUuid,
     ApproverName,
     BeginDate,
